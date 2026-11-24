@@ -28,9 +28,9 @@
         "name": "Wenlin Zhang"
       }
     ],
-    "concept_doi": null,
+    "concept_doi": "10.5281/zenodo.24488905",
     "current_version": 2,
-    "doi": null,
+    "doi": "10.5281/zenodo.24488906",
     "lean_source": {
       "revision": "106c79bbb6571a3dc7c60f4b2146860d56e88fc5",
       "url": "https://github.com/the-omega-institute/trureturing/blob/106c79bbb6571a3dc7c60f4b2146860d56e88fc5/D5/S1/Words/Palindromes/ThueMorseSharpPrefix.lean"
