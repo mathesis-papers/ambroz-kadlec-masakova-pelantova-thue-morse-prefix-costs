@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+message: "If you use this work, cite it."
+title: "A signed-weight extension of Frid's recurrence for the Thue–Morse prefix problems of Ambrož, Kadlec, Masáková and Pelantová"
+authors:
+  - name: "Haobo Ma"
+  - name: "Wenlin Zhang"
+date-released: "2026-11-24"
+version: "2"
+url: "https://mathesis-omega-research.apps.chrono-ai.fun/papers/ambroz-kadlec-masakova-pelantova-thue-morse-prefix-costs?version=2"
+license: "CC-BY-4.0"

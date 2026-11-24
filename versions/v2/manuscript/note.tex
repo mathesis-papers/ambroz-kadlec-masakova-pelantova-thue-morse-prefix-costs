@@ -1,0 +1,471 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=27mm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,booktabs,array,longtable}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newcommand{\rev}{\operatorname{rev}}
+\newcommand{\pl}{\operatorname{pl}}
+\newcommand{\cl}{\operatorname{cpl}}
+\title{A signed-weight extension of Frid's recurrence for the Thue--Morse prefix problems of Ambro\v{z}, Kadlec, Mas\'akov\'a and Pelantov\'a}
+\author{Haobo Ma\\\small ChronoAI Pte Ltd, Singapore\and
+Wenlin Zhang\\\small National University of Singapore\\\small ChronoAI Pte Ltd, Singapore}
+\date{18 November 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+Extending Frid's ordinary-length recurrence (2019, Theorem~4), we prove
+the sharp factor-two and unbounded equal-cost assertions of Ambro\v{z},
+Kadlec, Mas\'akov\'a and Pelantov\'a, arXiv:1812.00711v2, Section~6,
+p.~13, final paragraph and Tables~1--2, p.~14, by identifying the combined
+pal-antipal length of each zero-start Thue--Morse prefix with the minimum
+weight of a signed binary expansion of its length.
+Desubstitution proves this formula and the sharp comparison with ordinary
+palindromic length. We determine all first equal-cost occurrences and the
+exact logarithmic upper growth rate of the combined length.
+Frid's recurrence also yields prefixes attaining the factor-two endpoint
+at every positive combined cost.
+\end{abstract}
+\noindent\small This note is licensed under Creative Commons Attribution 4.0
+International (CC BY 4.0).\normalsize
+
+\section{The prefix question and the result}
+Let $t=t_0t_1\cdots$ be the binary Thue--Morse word, with
+\[
+ t_0=0,\qquad t_{2m}=t_m,\qquad t_{2m+1}=1-t_m\quad(m\geq0).
+\]
+For a binary word $w$, let $E(w)$ exchange $0$ and $1$ letter by letter.
+A palindrome satisfies $w=\rev(w)$; an antipalindrome satisfies
+$w=E(\rev(w))$. Define $\pl(w)$ and $\cl(w)$ as the minimum numbers of
+consecutive nonempty factors in a factorization of $w$, allowing respectively
+palindromes, and palindromes or antipalindromes. Both costs of the empty word
+are zero. Put
+\[
+ P(n)=\pl(t_0\cdots t_{n-1}),\qquad
+ C(n)=\cl(t_0\cdots t_{n-1})\quad(n\geq0).
+\]
+These are costs of the prefix starting at zero, not maxima over all factors.
+For an integer $z$, let $W(z)$ be the least $k\geq0$ such that
+\[
+ z=\sum_{h=1}^{k}\varepsilon_h2^{e_h},\qquad
+ \varepsilon_h\in\{-1,1\},\quad e_h\in\mathbb Z_{\geq0}.
+\]
+Repeated exponents are allowed in this definition.
+
+The final paragraph of Section~6 of \cite{AKMP} suggests that allowing
+antipalindromes reduces the prefix factor count ``by half (and not more)''.
+It then proposes arbitrarily large equal ordinary and combined costs.
+These are unnumbered suggestions in a prefix context, rather than assertions
+about all shifted factors. We prove both, including a first-occurrence
+formula for the equal-cost prefixes displayed in Table~2.
+
+\begin{theorem}\label{thm:main}
+For every $n\geq0$,
+\[
+ C(n)=W(n),\qquad C(n)\leq P(n)\leq2C(n).
+\]
+Both endpoints are attained at every positive combined cost: for every
+$k\geq1$ there are positive prefix lengths $a,b$ with
+$P(a)=C(a)=k$ and $P(b)=2C(b)=2k$.
+\end{theorem}
+
+Frid \cite[Lemma~3 and Theorem~4]{Frid}, first posted in June 2019,
+determines $P$ by recurrences modulo four. Li \cite[Introduction and
+Proposition~1]{Li}, posted in July 2019, gives later independent
+ordinary-length results and generalizations, acknowledging Frid's work.
+The signed-weight sequence itself is classical: see OEIS A007302
+\cite{OEIS}, including Wilson's 2005 and Fox's 2013 recurrences, and
+\cite[Section~2, p.~3]{KW} on minimum-weight nonadjacent forms.
+Our contribution is its identification with the mixed minimum $C$.
+The palindrome/antipalindrome interchange and centered desubstitution
+already occur in \cite[Section~5, Proposition~6 and Lemmas~2--3]{BBGL}.
+The proof below uses the two
+halvings of an odd-start even-length factor; no recurrence for $P$ is needed
+for that formula or for the universal factor-two bound. We use Frid's exact
+recurrence only to give sharp examples at every combined cost.
+
+\section{Signed weights and one-letter changes}
+\begin{lemma}\label{lem:weight}
+We have $W(0)=0$ and $W(1)=1$. For $z\in\mathbb Z$ and $m\geq0$,
+\begin{align}
+ W(-z)&=W(z),
+ &|W(z+1)-W(z)|&\leq1,\label{eq:basic}\\
+ W(2m)&=W(m),
+ &W(2m+1)&=1+\min\{W(m),W(m+1)\}.\label{eq:binary}
+\end{align}
+Consequently,
+\begin{align}
+ W(4m)&=W(m),&W(4m+1)&=W(m)+1,\nonumber\\
+ W(4m+2)&=1+\min\{W(m),W(m+1)\},
+ &W(4m+3)&=W(m+1)+1.\label{eq:four}
+\end{align}
+\end{lemma}
+\begin{proof}
+Changing all signs gives symmetry. Concatenating representations proves
+$W(x+y)\leq W(x)+W(y)$, which gives \eqref{eq:basic}.
+In a minimum representation, two opposite unit terms cancel and two
+equal unit terms combine into one term of exponent one. Either operation
+would reduce the number of terms. Thus there are no unit terms when the
+integer is even, and exactly one, of sign $1$ or $-1$, when it is odd.
+Dividing the remaining terms by two gives the lower bounds in
+\eqref{eq:binary}; doubling a minimum representation and, in the odd case,
+adding a unit term gives the reverse inequalities.
+For example,
+$W(4m+1)=1+\min\{W(m),1+\min(W(m),W(m+1))\}$.
+The second entry of the outer minimum is at least $W(m)$ by
+\eqref{eq:basic}. This proves the residue-one formula. The residue-three
+formula follows in the same way with $m+1$ in place of $m$; the even
+residues follow directly from \eqref{eq:binary}.
+\end{proof}
+
+For either cost $L=\pl$ or $L=\cl$, appending a letter changes the cost
+by at most one:
+\begin{equation}\label{eq:lip}
+ |L(wa)-L(w)|\leq1.
+\end{equation}
+Appending a singleton proves one direction. For the other, take an optimal
+factorization of $wa$. If its last factor is a singleton, remove it.
+Otherwise write that last factor as $bva$. Removing its two outside
+letters leaves a palindrome or antipalindrome $v$ of the same type.
+After deleting the final $a$, replace $bva$ by the singleton $b$ followed
+by $v$, omitting $v$ if empty. This increases the number of factors by
+at most one. In the ordinary case all factors involved are palindromes.
+
+\section{A lower bound on every mixed cut}
+Call a nonempty factor allowed if it is a palindrome or an antipalindrome.
+For half-open intervals write $t[i:j)=t_i\cdots t_{j-1}$.
+
+\begin{lemma}\label{lem:cut}
+If $0\leq i<j$ and $t[i:j)$ is allowed, then
+\begin{equation}\label{eq:cut}
+ W(j)\leq W(i)+1.
+\end{equation}
+\end{lemma}
+\begin{proof}
+Let $\mu(0)=01$ and $\mu(1)=10$. Then $t=\mu(t)$ and
+\[
+ \rev(\mu(v))=\mu(E(\rev(v))).
+\]
+Since $\mu$ is injective on binary words and commutes with $E$,
+$\mu(v)$ is allowed if and only if $v$ is allowed, with palindrome and
+antipalindrome interchanged.
+
+There are no constant factors of length three: every three consecutive
+positions contain an aligned pair $t_{2a},t_{2a+1}$ of different letters.
+There is no palindrome of length five either. If such a factor starts
+at $2a$, its five letters are
+\[
+ t_a,\ 1-t_a,\ t_{a+1},\ 1-t_{a+1},\ t_{a+2};
+\]
+the palindrome equations force $t_a=t_{a+1}=t_{a+2}$.
+Starting at $2a+1$ gives
+$1-t_a,t_{a+1},1-t_{a+1},t_{a+2},1-t_{a+2}$ and the same contradiction.
+Every odd palindrome of length at least five contains a central
+palindrome of length five. Antipalindromes have even length. Hence an
+allowed odd-length factor has length one or three.
+
+We now use strong induction on $j-i$. Lengths one and two satisfy
+\eqref{eq:cut} by subadditivity and $W(1)=W(2)=1$.
+For length three the factor is a palindrome. Its first and third letters
+cannot agree if $i\equiv0$ or $1\pmod4$, by the defining recurrence for $t$.
+If $i=4a+2$, \eqref{eq:four} gives
+\[
+ W(i)=1+\min\{W(a),W(a+1)\},\qquad W(j)=1+W(a+1),
+\]
+so \eqref{eq:basic} gives \eqref{eq:cut}.
+If $i=4a+3$, the values are $1+W(a+1)$ and
+$1+\min\{W(a+1),W(a+2)\}$, so the increment is nonpositive.
+
+It remains to consider even length $j-i=2k\geq4$.
+If $i=2a$, put $j=2b$. Then $t[i:j)=\mu(t[a:b))$,
+and the induction hypothesis at the shorter allowed factor $t[a:b)$,
+together with $W(2a)=W(a)$ and $W(2b)=W(b)$, gives the result.
+
+If $i=2a+1$ and $j=2b+1$, then $b-a=k$.
+Removing the first and last letters leaves
+$\mu(t[a+1:b))$, an allowed word. Extending by one letter on each side
+also gives an allowed word, namely $\mu(t[a:b+1))$.
+To check extension, write the original reflection equation as
+$1-t_a=E^\varepsilon(t_b)$, where $\varepsilon\in\{0,1\}$ and
+$E^0$ is the identity on letters. It implies
+$t_a=E^\varepsilon(1-t_b)$, the equation for the two added letters;
+all inner reflection equations are unchanged.
+The two desubstituted words have lengths $k-1$ and $k+1$, both positive
+and smaller than $2k$. Thus induction gives
+\[
+ W(b)\leq W(a+1)+1,\qquad W(b+1)\leq W(a)+1.
+\]
+It follows that
+\[
+ \min\{W(b),W(b+1)\}\leq\min\{W(a),W(a+1)\}+1.
+\]
+Apply the odd formula in \eqref{eq:binary} to $i$ and $j$ to finish.
+\end{proof}
+
+For any mixed factorization of a prefix, let
+$0=i_0<i_1<\cdots<i_q=n$ be its cuts. Summing
+$W(i_h)-W(i_{h-1})\leq1$ gives $W(n)\leq q$.
+Taking the minimum proves
+\begin{equation}\label{eq:lower}
+ W(n)\leq C(n).
+\end{equation}
+
+\section{The exact mixed minimum and the comparison}
+Applying $\mu$ to a mixed factorization preserves the number of allowed
+nonempty factors, so $C(2m)\leq C(m)$. By \eqref{eq:lip},
+\[
+ C(2m+1)\leq1+\min\{C(m),C(m+1)\}.
+\]
+Strong induction, starting with $C(0)=0$ and $C(1)=1$, and
+\eqref{eq:binary} prove $C(n)\leq W(n)$. For odd $n\geq3$ both
+indices $m,m+1$ are smaller than $n$; the initial odd case is $n=1$.
+Together with \eqref{eq:lower} this proves $C(n)=W(n)$.
+
+Put $\tau=\mu^2$, so $\tau(0)=0110$ and $\tau(1)=1001$.
+Both letter images are palindromes, and reversal commutes with $\tau$.
+Consequently $\tau$ carries a palindromic factorization to one with
+the same number of factors, and $P(4m)\leq P(m)$.
+Using \eqref{eq:lip} from the neighboring multiples of four gives
+\begin{align*}
+ P(4m+1)&\leq P(m)+1,\\
+ P(4m+2)&\leq\min\{P(m),P(m+1)\}+2,\\
+ P(4m+3)&\leq P(m+1)+1.
+\end{align*}
+Strong induction and \eqref{eq:four} now give $P(n)\leq2W(n)$.
+The empty case is immediate. In residue two the upper bound is
+$2\min\{W(m),W(m+1)\}+2=2W(4m+2)$; in residues one and three
+the added one is at most the added two in $2W$.
+Finally $C\leq P$ because every ordinary factorization is mixed.
+The prefix $01$ has $C(2)=1$ and $P(2)=2$, so the constant two is optimal.
+
+\section{Attainment at both endpoints}
+\begin{corollary}\label{cor:equal}
+Set $a_0=1$ and $a_{r+1}=4a_r-1$. Then for every $r\geq0$,
+\[
+ a_r=\frac{2\cdot4^r+1}{3},\qquad P(a_r)=C(a_r)=r+1.
+\]
+\end{corollary}
+\begin{proof}
+Deleting one letter from the prefix of length $4a_r$ gives
+$P(a_{r+1})\leq P(a_r)+1$, so $P(a_r)\leq r+1$.
+The residue-three formula gives
+$W(4a_r-1)=W(a_r)+1$. Thus $C(a_r)=W(a_r)=r+1$,
+and $C\leq P$ gives equality. The closed formula follows from the
+recurrence and $a_0=1$.
+\end{proof}
+
+\begin{corollary}\label{cor:first}
+For $k\geq1$, put $g_k=(2\cdot4^{k-1}+1)/3$. Then
+\[
+ \min\{n\geq1:C(n)=k\}
+ =\min\{n\geq1:P(n)=C(n)=k\}=g_k.
+\]
+Thus every first occurrence in Table~2 of \cite{AKMP} follows from the
+same formula, not just its finitely many displayed rows.
+\end{corollary}
+\begin{proof}
+Corollary~\ref{cor:equal} gives $P(g_k)=C(g_k)=k$.
+We prove $W(n)\leq k-1$ for $0\leq n<g_k$ by induction on $k$.
+For $k=1$ this concerns only $n=0$.
+Since $g_{k+1}=4g_k-1$, write $n<g_{k+1}$ as $4m+r$,
+where $0\leq r\leq3$. Then $m<g_k$; if $r=3$, also $m+1<g_k$.
+In \eqref{eq:four}, residues zero and one use $W(m)\leq k-1$,
+residue two uses $\min\{W(m),W(m+1)\}\leq W(m)$,
+and residue three uses $W(m+1)\leq k-1$.
+Hence $W(n)\leq k$ in every case. Now use $C=W$.
+The numbers $g_k$ are OEIS A007583, with index $k-1$; its 2023
+comment describes their signed-weight extremal meaning \cite{OEIS}.
+The conclusion here is their equal-cost prefix interpretation.
+\end{proof}
+
+\begin{corollary}\label{cor:growth}
+For the zero-start mixed prefix cost,
+\[
+ \limsup_{n\to\infty}\frac{C(n)}{\ln n}=\frac1{\ln4},
+ \qquad \liminf_{n\to\infty}\frac{C(n)}{\ln n}=0.
+\]
+\end{corollary}
+\begin{proof}
+If $C(n)=k$, Corollary~\ref{cor:first} gives $n\geq g_k$.
+As $k\to\infty$, $\ln g_k=(k-1)\ln4+\ln(2/3)+o(1)$,
+so $k/\ln g_k\to1/\ln4$; bounded $k$ contributes limit zero.
+Equality in the upper limit follows along $n=g_k$.
+For the lower limit use $C(2^r)=W(2^r)=1$ and nonnegativity.
+\end{proof}
+
+\begin{corollary}\label{cor:types}
+A nonempty Thue--Morse prefix is a palindrome exactly when its length
+is $4^r$, and an antipalindrome exactly when its length is $2\cdot4^r$,
+where $r\geq0$.
+\end{corollary}
+\begin{proof}
+Being allowed is equivalent to $C(n)=1$, hence to $W(n)=1$,
+which for positive $n$ means $n=2^e$.
+The prefix of length $2^e$ is $\mu^e(0)$.
+The reflection identity used in Lemma~\ref{lem:cut} interchanges the
+two types at each application of $\mu$, starting with the palindrome $0$.
+A nonempty binary word cannot have both types.
+The interchange is also \cite[Observation~1(iv)--(v)]{AMP}.
+\end{proof}
+
+For the other endpoint we use Frid's published recurrence
+\cite[Theorem~4, equations (1)--(4)]{Frid}:
+\begin{align}
+ P(4m)&=P(m),&P(4m+1)&=P(m)+1,\nonumber\\
+ P(4m+2)&=\min\{P(m),P(m+1)\}+2,
+ &P(4m+3)&=P(m+1)+1.\label{eq:frid}
+\end{align}
+Here the word and prefix conventions are the same; Frid uses letters
+$a,b$ and the notation $\operatorname{PPL}_t$.
+
+\begin{corollary}\label{cor:sharp}
+Let $F(n)=64n+10$. For every $n\geq0$,
+\[
+ P(F(n))=P(n)+4,\qquad C(F(n))=C(n)+2.
+\]
+In particular, if $v_0=0$, $z_0=2$, and
+$v_{r+1}=F(v_r)$, $z_{r+1}=F(z_r)$, then
+\[
+ (P(v_r),C(v_r))=(4r,2r),\qquad
+ (P(z_r),C(z_r))=(4r+2,2r+1).
+\]
+\end{corollary}
+\begin{proof}
+Write $p=P(n)$ and $w=W(n)$. Equations \eqref{eq:frid} and
+\eqref{eq:four} successively give the following pairs of adjacent values:
+\[
+\begin{array}{c|cc|cc}
+ j&P(j)&P(j+1)&W(j)&W(j+1)\\\hline
+ 4n&p&p+1&w&w+1\\
+ 16n+2&p+2&p+2&w+1&w+2\\
+ 64n+10&p+4&p+3&w+2&w+3
+\end{array}
+\]
+Use $C=W$ and iterate, starting with $(P(0),C(0))=(0,0)$ and
+$(P(2),C(2))=(2,1)$. Positive even costs use $v_r$ with $r\geq1$;
+positive odd costs use $z_r$ with $r\geq0$.
+\end{proof}
+
+The prefix restriction matters. The shifted factor $t[1:7)=110100$
+is an antipalindrome, so its mixed cost is one. Its ordinary cost is
+three: $11\mid010\mid0$ is a factorization, and its only proper
+nonempty palindromic prefixes are $1$ and $11$, whose complementary
+suffixes $10100$ and $0100$ are not palindromes. The whole word is not
+a palindrome either. Thus the factor-two inequality is false for
+arbitrary shifted factors.
+
+\clearpage
+\section{Coverage and verification}
+The table separates source assertions, questions and consequences.
+Page numbers refer to arXiv:1812.00711v2 \cite{AKMP}.
+\begingroup\small
+\begin{longtable}{@{}p{0.34\linewidth}p{0.60\linewidth}@{}}
+\toprule
+Source item&Coverage\\\midrule
+Section 6, p. 13; Table 1, p. 14: sharp factor two&
+Proved for all zero-start prefixes; Corollary~\ref{cor:sharp} gives
+attainment at every positive mixed cost.\\[3pt]
+Section 6, p. 13; Table 2, p. 14: unbounded equal costs&
+Proved by Corollary~\ref{cor:equal}, including its displayed length family.\\[3pt]
+Table 2: first equal-cost occurrences&
+Proved for every cost by Corollary~\ref{cor:first}; the underlying signed-weight
+record sequence is already OEIS A007583.\\[3pt]
+Table 1: first sharp occurrences&
+Not covered in general. Its costs 1--5 are finite word checks;
+all displayed row values follow from \eqref{eq:frid} and $C=W$.
+Corollary~\ref{cor:sharp} asserts attainment, not first occurrence.\\[3pt]
+Section 6, Figure 2: mixed prefix growth&
+Not posed as a formula; proved in Corollary~\ref{cor:growth}.
+For ordinary prefixes, Frid's Corollary~16 already gives
+$\limsup P(n)/\ln n=3/(4\ln2)$; prior proof cited.\\[3pt]
+Section 4, p. 10: conjectured all-factor Thue--Morse growth;
+pp. 9--10: Fibonacci estimates&
+Not covered. The maximum over shifted factors is not $P(n)$ or $C(n)$;
+the prefix formulas do not determine those constants.\\[3pt]
+Section 7(i): powers conjugate to palindrome-image morphisms&
+Not covered as a general question. The source's Example~3 already gives
+$\mu^2(0)=0110$, $\mu^2(1)=1001$; prior example cited.\\[3pt]
+Section 7(ii)--(iii): lower growth methods and Fibonacci factors&
+Not covered in their general or Fibonacci scope. For Thue--Morse prefixes,
+Frid's Proposition~14 and Corollary~16 give the exact ordinary first
+occurrences and upper growth rate; prior proof cited.\\[3pt]
+Section 7(iv): uniformly recurrent words with square-root growth&
+Not covered; no assertion about such words follows here.\\[3pt]
+Section 7(v): morphisms with arbitrarily long antipalindromes&
+Not covered as a general classification. Corollary~\ref{cor:types}
+classifies the allowed Thue--Morse prefixes. AMP's Theorems~34 and 36
+give later uniform and palindromic special cases; prior proof cited.\\[3pt]
+Arbitrary-factor version of the factor-two comparison&
+Not asserted in the source; fails for $t[1:7)=110100$,
+whose ordinary and mixed costs are three and one.\\
+\bottomrule
+\end{longtable}
+\endgroup
+
+\begingroup\small
+The pinned
+\href{https://github.com/the-omega-institute/trureturing/blob/106c79bbb6571a3dc7c60f4b2146860d56e88fc5/D5/S1/Words/Palindromes/ThueMorseSignedCut.lean}{signed-cut module}
+defines \texttt{MixedFactors} as consecutive nonempty allowed factors
+and \texttt{combinedLength} as their minimum number.
+Its \texttt{allowed\_factor\_signed\_cut} proves \eqref{eq:cut}, and
+\texttt{combined\_prefix\_signed\_lower} proves $W(n)\leq C(n)\leq P(n)$.
+The pinned
+\href{https://github.com/the-omega-institute/trureturing/blob/106c79bbb6571a3dc7c60f4b2146860d56e88fc5/D5/S1/Words/Palindromes/ThueMorseSharpPrefix.lean}{sharp-prefix module}
+contains \texttt{prefix\_signed\_upper} for $P(n)\leq2W(n)$ and
+\texttt{sharp\_factor\_two\_prefix} for the universal comparison
+and its positive witness.
+The declarations \texttt{family\_attains} and
+\texttt{unbounded\_equal\_cost} in
+the pinned \href{https://github.com/the-omega-institute/trureturing/blob/106c79bbb6571a3dc7c60f4b2146860d56e88fc5/D5/S1/Words/Palindromes/ThueMorseAttainment.lean}{attainment module}
+give Corollary~\ref{cor:equal} and its unboundedness consequence.
+Their binary word is \texttt{factor n 0}, with false representing $0$.
+The equality $C=W$, the first-occurrence and growth formulas,
+the complete prefix-type classification, Corollary~\ref{cor:sharp},
+and the shifted-factor example have written proofs above;
+these extensions are distinct from the selected declarations' scope.
+\par\endgroup
+
+The accompanying \texttt{verify.py} computes exact ordinary and mixed word
+minima and compares them with the signed-weight and Frid recurrences.
+It also checks the first equal-cost occurrences and the prefix-type
+classification. The finite ranges and outputs are given in the supporting
+files; the universal assertions use the written proofs above.
+
+\begin{thebibliography}{9}
+\small\setlength{\itemsep}{1pt}
+\bibitem{AKMP} P. Ambro\v{z}, O. Kadlec, Z. Mas\'akov\'a and E. Pelantov\'a,
+\emph{Palindromic length of words and morphisms in class $\mathcal P$},
+Theoretical Computer Science \textbf{780} (2019), 74--83.
+\href{https://doi.org/10.1016/j.tcs.2019.02.024}{doi:10.1016/j.tcs.2019.02.024}.
+Source text: \href{https://arxiv.org/abs/1812.00711v2}{arXiv:1812.00711v2},
+Section 6, pp. 12--14, and Section 7, pp. 14--15.
+\bibitem{Frid} A. E. Frid, \emph{Prefix palindromic length of the Thue--Morse
+word}, Journal of Integer Sequences \textbf{22} (2019), Article 19.7.8.
+\href{https://arxiv.org/abs/1906.09392v2}{arXiv:1906.09392v2},
+Lemma 3 and Theorem 4, pp. 2--3.
+\bibitem{Li} S. Li, \emph{Palindromic length complexity and a generalization
+of Thue--Morse sequences},
+\href{https://arxiv.org/abs/1907.12543v1}{arXiv:1907.12543v1} (2019),
+Proposition 1.
+\bibitem{AMP} P. Ambro\v{z}, Z. Mas\'akov\'a and E. Pelantov\'a,
+\emph{Morphisms generating antipalindromic words},
+European Journal of Combinatorics \textbf{89} (2020), 103160,
+\href{https://doi.org/10.1016/j.ejc.2020.103160}{doi:10.1016/j.ejc.2020.103160};
+\href{https://arxiv.org/abs/1906.06174v1}{arXiv:1906.06174v1} (2019),
+Observation 1 and Theorems 34 and 36.
+\bibitem{OEIS} OEIS Foundation Inc., \emph{The On-Line Encyclopedia of
+Integer Sequences}, entries \href{https://oeis.org/A007302}{A007302}
+(signed binary weight) and \href{https://oeis.org/A007583}{A007583}
+(record positions), accessed 18 November 2026.
+\bibitem{KW} S. Kropf and S. Wagner, \emph{$q$-Quasiadditive Functions},
+\href{https://arxiv.org/abs/1605.03654v1}{arXiv:1605.03654v1} (2016),
+Section~2, p.~3, ``The nonadjacent form and its Hamming weight.''
+\bibitem{BBGL} A. Blondin-Mass\'e, S. Brlek, A. Garon and S. Labb\'e,
+\emph{Combinatorial properties of $f$-palindromes in the Thue--Morse sequence},
+Pure Mathematics and Applications \textbf{19}(2--3) (2008), 39--52.
+\href{https://www.slabbe.org/Publications/2008-ThueMorseLacunas.pdf}{Author text},
+Section~5, Proposition~6 and Lemmas~2--3, pp.~10--11.
+\end{thebibliography}
+\end{document}

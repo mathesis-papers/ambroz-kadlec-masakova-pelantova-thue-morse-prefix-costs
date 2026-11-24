@@ -1,0 +1,175 @@
+{
+  "schema_version": 1,
+  "status": "pass",
+  "word_minima": {
+    "bound": 8192,
+    "arithmetic": "exact integers",
+    "intervals_examined": 33558528,
+    "allowed_cuts_checked": 89658,
+    "direct_predicate_comparisons": 16512,
+    "prefix_values_sha256": "5acc7a8bab36c2de6d79d79756b74f69c6c22907bf2a11e26b34c094250da4ac",
+    "sharp_first_occurrences_in_window": {
+      "1": 2,
+      "2": 10,
+      "3": 118,
+      "4": 630,
+      "5": 7542
+    },
+    "equal_first_occurrences_in_window": {
+      "1": 1,
+      "2": 3,
+      "3": 11,
+      "4": 43,
+      "5": 171,
+      "6": 683,
+      "7": 2731
+    }
+  },
+  "additional_exact_checks": {
+    "table_1_values_from_frid_and_signed_formula": [
+      2,
+      10,
+      118,
+      630,
+      7542,
+      40310,
+      482678,
+      2579830,
+      30891382
+    ],
+    "table_1_rows": [
+      [
+        2,
+        2,
+        1
+      ],
+      [
+        10,
+        4,
+        2
+      ],
+      [
+        118,
+        6,
+        3
+      ],
+      [
+        630,
+        8,
+        4
+      ],
+      [
+        7542,
+        10,
+        5
+      ],
+      [
+        40310,
+        12,
+        6
+      ],
+      [
+        482678,
+        14,
+        7
+      ],
+      [
+        2579830,
+        16,
+        8
+      ],
+      [
+        30891382,
+        18,
+        9
+      ]
+    ],
+    "table_2_rows": [
+      [
+        1,
+        1,
+        1
+      ],
+      [
+        3,
+        2,
+        2
+      ],
+      [
+        11,
+        3,
+        3
+      ],
+      [
+        43,
+        4,
+        4
+      ],
+      [
+        171,
+        5,
+        5
+      ],
+      [
+        683,
+        6,
+        6
+      ],
+      [
+        2731,
+        7,
+        7
+      ],
+      [
+        10923,
+        8,
+        8
+      ],
+      [
+        43691,
+        9,
+        9
+      ],
+      [
+        174763,
+        10,
+        10
+      ],
+      [
+        699051,
+        11,
+        11
+      ],
+      [
+        2796203,
+        12,
+        12
+      ],
+      [
+        11184811,
+        13,
+        13
+      ],
+      [
+        44739243,
+        14,
+        14
+      ]
+    ],
+    "table_values_scope": "word minima through the stated window; recurrence evaluations beyond it",
+    "first_equal_cost_formula": "(2 * 4 ** (k - 1) + 1) // 3 for k >= 1",
+    "first_equal_cost_formula_scope": "written proof for all k; actual word checks within the stated window",
+    "general_first_sharp_occurrence_formula": "not established",
+    "signed_weight_xor_formula_test_domain": "0 <= n <= 100000",
+    "prefix_type_classification_direct_test_domain": "1 <= n <= 128",
+    "affine_identity_test_domain": "0 <= n <= 100000",
+    "attaining_family_members_checked_per_base": 32,
+    "shifted_factor": {
+      "start": 1,
+      "length": 6,
+      "word": "110100",
+      "ordinary": 3,
+      "combined": 1
+    }
+  }
+}

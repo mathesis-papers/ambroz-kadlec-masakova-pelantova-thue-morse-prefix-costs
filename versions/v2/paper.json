@@ -1,0 +1,66 @@
+{
+  "files": {
+    "pdf": {
+      "bytes": 83595,
+      "matches_public": true,
+      "path": "paper.pdf",
+      "public_sha256": "cbb0bcf92a1f73e49dd576b6790fa7aac001ce6bcebe37eb3a555b12774ba0a9",
+      "sha256": "cbb0bcf92a1f73e49dd576b6790fa7aac001ce6bcebe37eb3a555b12774ba0a9"
+    },
+    "source": {
+      "bytes": 15781,
+      "matches_public": true,
+      "path": "source.archive",
+      "public_sha256": "22b635b5a533a68f55930da395f6b9e1e5a490ffd3b983c6058b5689219d4a02",
+      "sha256": "22b635b5a533a68f55930da395f6b9e1e5a490ffd3b983c6058b5689219d4a02"
+    }
+  },
+  "source_identity": "Mathesis public projection",
+  "work": {
+    "abstract_text": "Extending Frid's ordinary-length recurrence (2019, Theorem 4), we prove the sharp factor-two and unbounded equal-cost assertions of Ambrož, Kadlec, Masáková and Pelantová, arXiv:1812.00711v2, Section 6, p. 13, final paragraph and Tables 1–2, p. 14, by identifying the combined pal-antipal length of each zero-start Thue–Morse prefix with the minimum weight of a signed binary expansion of its length. Desubstitution proves this formula and the sharp comparison with ordinary palindromic length. We determine all first equal-cost occurrences and the exact logarithmic upper growth rate of the combined length. Frid's recurrence also yields prefixes attaining the factor-two endpoint at every positive combined cost.",
+    "authors": [
+      {
+        "affiliation": "ChronoAI Pte Ltd, Singapore",
+        "name": "Haobo Ma"
+      },
+      {
+        "affiliation": "National University of Singapore; ChronoAI Pte Ltd, Singapore",
+        "name": "Wenlin Zhang"
+      }
+    ],
+    "concept_doi": null,
+    "current_version": 2,
+    "doi": null,
+    "lean_source": {
+      "revision": "106c79bbb6571a3dc7c60f4b2146860d56e88fc5",
+      "url": "https://github.com/the-omega-institute/trureturing/blob/106c79bbb6571a3dc7c60f4b2146860d56e88fc5/D5/S1/Words/Palindromes/ThueMorseSharpPrefix.lean"
+    },
+    "license": "CC-BY-4.0",
+    "msc": [],
+    "pdf": {
+      "bytes": 83595,
+      "sha256": "cbb0bcf92a1f73e49dd576b6790fa7aac001ce6bcebe37eb3a555b12774ba0a9",
+      "url": "/api/v1/collected-papers/ambroz-kadlec-masakova-pelantova-thue-morse-prefix-costs/files/pdf?version=2"
+    },
+    "previous_version": null,
+    "publication": "public",
+    "published_on": "2026-11-24T03:25:41.596483230Z",
+    "record": "ambroz-kadlec-masakova-pelantova-thue-morse-prefix-costs",
+    "repository_name": "ambroz-kadlec-masakova-pelantova-thue-morse-prefix-costs",
+    "source": {
+      "bytes": 15781,
+      "sha256": "22b635b5a533a68f55930da395f6b9e1e5a490ffd3b983c6058b5689219d4a02",
+      "url": "/api/v1/collected-papers/ambroz-kadlec-masakova-pelantova-thue-morse-prefix-costs/files/source?version=2"
+    },
+    "title": "A signed-weight extension of Frid's recurrence for the Thue–Morse prefix problems of Ambrož, Kadlec, Masáková and Pelantová",
+    "versions": [
+      {
+        "previous_version": null,
+        "published_on": "2026-11-24T03:25:41.596483230Z",
+        "revision": "2",
+        "version": 2
+      }
+    ],
+    "work": "ambroz-kadlec-masakova-pelantova-thue-morse-prefix-costs"
+  }
+}
